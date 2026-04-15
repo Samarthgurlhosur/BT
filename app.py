@@ -2,7 +2,8 @@
 Land Registration System - Main Flask Application
 Full-stack web application with Blockchain and AI features
 """
-
+import eventlet
+import eventlet.wsgi
 import os
 import secrets
 from functools import wraps
@@ -790,7 +791,5 @@ def seed_data():
     print("Sample data seeded successfully!")
 
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    socket_io.run(app, debug=False, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+if __name__ == "__main__":
+    socket_io.run(app, host='0.0.0.0', port=5000)
